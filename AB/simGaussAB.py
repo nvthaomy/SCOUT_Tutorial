@@ -77,9 +77,9 @@ reduced_Tdamp = 100*reduced_timestep #time units
 reduced_pressure = 1
 reduced_Pdamp = 1000*reduced_timestep #time units
 
-steps = 200000/reduced_timestep
+steps = 10000/reduced_timestep
 equilibrationSteps = 1000/reduced_timestep
-stride = 1000
+stride = 100
 #if platform is not set, openmm will try to select the fastest available Platform
 platform = None #'CPU','CUDA','OpenCL'
 platformProperties = None
