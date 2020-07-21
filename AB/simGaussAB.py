@@ -34,8 +34,9 @@ import simtk.openmm.app.topology as topology
 epsilon  = 1 * kilojoules_per_mole
 sigma = 0.1 * nanometer
 mass = 12 * amu
-N_av = 6.022140857*10**23 /mole
-kb = 1.380649*10**(-23)*joules/kelvin* N_av #joules/kelvin/mol
+N_av = constants.AVOGADRO_CONSTANT_NA 
+kb = constants.BOLTZMANN_CONSTANT_kB
+
 #====================================
 #1) SYSTEM DIMENSIONLESS PARAMETERS###
 #====================================
@@ -44,19 +45,18 @@ NA = 1000
 NB = 1000
 N = NA + NB
 
-charge = 0.0 * elementary_charge
 boxLs = [10.,10.,20.]
 
-#c)Pair potential: u = A exp(-Br^2)
-B = 0.25
+#c)Pair potential: u = B exp(-Kr^2)
+K = 0.25
 #interaction energy scale for each pair type
 #polymer-polymer
-A_AA =  1.0
+B_AA =  1.0
 #solvent-solvent
-A_BB =  1.0
+B_BB =  1.0
 #polymer-solvent
-A_AB =  1.0
-reduced_nonbondedCutoff = 2.5/np.sqrt(B) 
+B_AB =  1.0
+reduced_Cutoff = 2.5/np.sqrt(K) 
 nonbondedMethod = openmm.CustomNonbondedForce.CutoffPeriodic
 #whether to add correction to the energy beyond nonbonded cutoff
 UseLongRangeCorrection = False
@@ -81,7 +81,7 @@ steps = 10000/reduced_timestep
 equilibrationSteps = 1000/reduced_timestep
 stride = 100
 #if platform is not set, openmm will try to select the fastest available Platform
-platform = None #'CPU','CUDA','OpenCL'
+platformName = None #'CPU','CUDA','OpenCL'
 platformProperties = None
 
 #platformProperties = {'Precision': 'mixed'}
@@ -90,13 +90,12 @@ platformProperties = None
 #3) Reports
 #=====================
 #set up data and trajectory reports:
-traj = 'trajectory.dcd'
 #if use mdtraj's reporter:
 #dcdReporter = mdtraj.reporters.DCDReporter(traj, 5000)
 
 #if don't have mdtraj, can use openmm's reporter to write out trajectory in pdb or dcd format
-dcdReporter = app.dcdreporter.DCDReporter(traj,stride,enforcePeriodicBox=True)
-#pdbReporter = app.pdbreporter.PDBReporter( traj, 5000)
+dcdReporter = app.dcdreporter.DCDReporter('trajectory.dcd',stride,enforcePeriodicBox=True)
+#pdbReporter = app.pdbreporter.PDBReporter( 'trajectory.dcd', 5000)
 dataReporter = app.statedatareporter.StateDataReporter('log.txt', stride, totalSteps=steps,
     step=True, speed=True, potentialEnergy=True, kineticEnergy=True, 
     totalEnergy=True, temperature=True, volume=True, density=True, separator='\t')
@@ -111,7 +110,7 @@ dataReporter_warmup= app.statedatareporter.StateDataReporter('log_warmup.txt', s
 #=============================
 boxLs = np.array(boxLs) * sigma
 planeLoc =  reduced_planeLoc*sigma
-nonbondedCutoff = reduced_nonbondedCutoff*sigma
+nonbondedCutoff = reduced_Cutoff*sigma
 dt = reduced_timestep* (mass*sigma*sigma/epsilon)**(1/2)
 temperature = reduced_temp * epsilon/kb
 friction = 1/(reduced_Tdamp) * (epsilon/(mass*sigma*sigma))**(1/2)
@@ -180,7 +179,7 @@ top.setPeriodicBoxVectors(system.getDefaultPeriodicBoxVectors())
 #================================
 #8) create custom nonbonded force
 #================================
-#gaussianFunc = 'A*exp(-B*r^2)'
+#gaussianFunc = 'B*exp(-K*r^2)'
 #for each pair interaction type, need to add ALL atoms in the system to the force object, only paricles in the InteractionGroup will interact with each other
 Ai = set()
 Bi = set()
@@ -192,10 +191,10 @@ for atom in top.atoms():
 all_atoms = Ai.union(Bi)
 
 #A-A:
-AA_nonbondedForce = openmm.CustomNonbondedForce('AAA*exp(-B*r^2)')
+AA_nonbondedForce = openmm.CustomNonbondedForce('BAA*exp(-K*r^2)')
 AA_nonbondedForce.setNonbondedMethod(nonbondedMethod)
-AA_nonbondedForce.addGlobalParameter('B',B/(sigma*sigma)) #length^-2
-AA_nonbondedForce.addGlobalParameter('AAA',A_AA*epsilon) #energy/mol
+AA_nonbondedForce.addGlobalParameter('K',K/(sigma*sigma)) #length^-2
+AA_nonbondedForce.addGlobalParameter('BAA',B_AA*epsilon) #energy/mol
 AA_nonbondedForce.addInteractionGroup(Ai,Ai)
 for i in range(system.getNumParticles()):
 	AA_nonbondedForce.addParticle()
@@ -204,10 +203,10 @@ AA_nonbondedForce.setUseLongRangeCorrection(UseLongRangeCorrection)
 system.addForce(AA_nonbondedForce)
 print ("\nNumber of particles in AA nonbonded force:{}".format(AA_nonbondedForce.getNumParticles()))
 #B-B:
-BB_nonbondedForce = openmm.CustomNonbondedForce('ABB*exp(-B*r^2)')
+BB_nonbondedForce = openmm.CustomNonbondedForce('BBB*exp(-K*r^2)')
 BB_nonbondedForce.setNonbondedMethod(nonbondedMethod)
-BB_nonbondedForce.addGlobalParameter('B',B/(sigma*sigma)) #length^-2
-BB_nonbondedForce.addGlobalParameter('ABB',A_BB*epsilon) #energy/mol
+BB_nonbondedForce.addGlobalParameter('K',K/(sigma*sigma)) #length^-2
+BB_nonbondedForce.addGlobalParameter('BBB',B_BB*epsilon) #energy/mol
 BB_nonbondedForce.addInteractionGroup(Bi,Bi)
 for i in range(system.getNumParticles()):
         BB_nonbondedForce.addParticle()
@@ -217,10 +216,10 @@ system.addForce(BB_nonbondedForce)
 print ("Number of particles in BB nonbonded force:{}".format(BB_nonbondedForce.getNumParticles()))
 
 #A-B:
-AB_nonbondedForce = openmm.CustomNonbondedForce('AAB*exp(-B*r^2)')
+AB_nonbondedForce = openmm.CustomNonbondedForce('BAB*exp(-K*r^2)')
 AB_nonbondedForce.setNonbondedMethod(nonbondedMethod)
-AB_nonbondedForce.addGlobalParameter('B',B/(sigma*sigma)) #length^-2
-AB_nonbondedForce.addGlobalParameter('AAB',A_AB*epsilon) #energy/mol
+AB_nonbondedForce.addGlobalParameter('K',K/(sigma*sigma)) #length^-2
+AB_nonbondedForce.addGlobalParameter('BAB',B_AB*epsilon) #energy/mol
 AB_nonbondedForce.addInteractionGroup(Ai,Bi)
 for i in range(system.getNumParticles()):
         AB_nonbondedForce.addParticle()
@@ -255,7 +254,8 @@ if ensemble == 'NPT':
     system.addForce(openmm.MonteCarloBarostat(pressure, temperature, barostatInterval))
 integrator = openmm.LangevinIntegrator(temperature, friction, dt)
 #use platform if specified, otherwise let omm decide
-if platform:
+if platformName != None:
+    platform = openmm.Platform.getPlatformByName(platformName)
     if platformProperties:
         simulation = app.Simulation(top,system, integrator, platform,platformProperties)
     else:
