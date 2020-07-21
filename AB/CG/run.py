@@ -42,7 +42,8 @@ steps_prod = 10000./dt
 steps_stride = 10./dt
 
 #srel parameters
-use_openmm = True
+use_openmm = False
+use_lammps = False
 sim.export.omm.platformName = 'OpenCL'
 sim.export.omm.device = -1 #-1 is default, let openmm choose its own platform. otherwise is GPU device #
 sim.export.omm.NPairPotentialKnots = 500 #number of points used to spline-interpolate the potential
