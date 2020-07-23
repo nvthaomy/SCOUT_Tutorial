@@ -1,0 +1,8 @@
+This script coarse grains an AB Gaussian fluid to a coarser system.
+The reference system is an ideal mixture (chi=0), with Uext=0.5.
+
+The "physical answer" is that the AB fluid should be coarse grained to an ideal fluid as well. While Uext=0.5 improves upon Uext=0.0, it is still insufficient to produce an ideal solution.
+
+To run: 
+    python run.py
+

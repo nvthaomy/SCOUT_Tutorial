@@ -1,0 +1,1060 @@
+/home/kshen/anaconda3/envs/py27/lib/python2.7/site-packages/mdtraj/utils/validation.py:116: TypeCastPerformanceWarning: Casting xyz dtype=float64 to <type 'numpy.float32'> 
+  TypeCastPerformanceWarning)
+['/home/kshen/Share/SCOUT/reorganize', '/home/kshen/mylib/sim.20190727', '/home/kshen/anaconda3/envs/py27/lib/python27.zip', '/home/kshen/anaconda3/envs/py27/lib/python2.7', '/home/kshen/anaconda3/envs/py27/lib/python2.7/plat-linux2', '/home/kshen/anaconda3/envs/py27/lib/python2.7/lib-tk', '/home/kshen/anaconda3/envs/py27/lib/python2.7/lib-old', '/home/kshen/anaconda3/envs/py27/lib/python2.7/lib-dynload', '/home/kshen/anaconda3/envs/py27/lib/python2.7/site-packages']
+> Loading compiled library pylib/geomlib.so
+> Loading compiled library pylib/maplib.so
+atom types: {'A': A, 'B': B}
+molecule types: [A:[A0], B:[B0]]
+Setting box: [ 29.9999995   14.99999982  15.        ]
+Adding 3375 A molecules to system
+Adding 3375 B molecules to system
+Adding LJG for ('A', 'A')
+Adding LJG for ('B', 'B')
+Adding LJG for ('A', 'B')
+Adding external sinusoid for A
+Force Field Summary: ForceField[<AA>,<BB>,<AB>,<Uext>]
+> Compiling Fortran for ABfluid 
+> Successfully compiled ABfluid 
+Making optimizer
+Box: [ 29.9999995   14.99999982  15.        ]
+Use target histograms: True
+Using OpenMM
+Check fixed parameters status:
+i,Fixed
+--- AA ---
+0 True
+1 True
+2 True
+3 True
+4 True
+--- BB ---
+0 True
+1 True
+2 True
+3 True
+4 True
+--- AB ---
+0 True
+1 True
+2 False
+3 True
+4 True
+--- Uext ---
+0 True
+1 True
+ParseTarData() not previously called.  Now calling...
+Loading pre-compiled target argument data from ABfluid_argdata.pickle
+WARNING: if system settings have changed, must delete old arg data and restart.
+Identifying bounds and constraints.
+
+======== STARTING NEW CONJUGATE GRADIENT MINIMIZATION ========
+
+INITIAL PARAMETERS
+   Label                Param       
+   AB:B                 4.4740e-01  
+
+Temporary file prefix is /home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH
+Making model trajectory for reweighting
+DimensionlessUnits
+=== OMM export currently uses LJ (Dimensionless) Units ===
+mass: 1.0 dalton
+epsilon: 1.0 kJ/mol
+tau: 1.0 ps
+=== Creating OMM System ===
+...setting box size [29.99999949664749, 14.999999819753631, 14.9999999999834]
+--- Creating Topology ---
+Total number of particles in system: 6750
+Total number of constraints: 0
+--- Create Forcefield ---
+---> Harmonic bond
+Site-Type Bond Matrix: 2x2
+[[False False]
+ [False False]]
+[[0 0]
+ [0 0]]
+---> Nonbonded Force
+Global cutoff (largest specified cutoff): 5.0
+Using tabulation to aggregate interaction between every pair of atom types
+Caution: Increasing NPairPotential to approach InnerCutoff! Assuming this is Global, i.e. all potentials using same Cutoff
+Nonbonded interactions detected, adding using tabulated potential
+---> External Force
+Adding external potential for atom type 0: Uext=0.5, NPeriod=1.0, axis=0
+...U0*sin(2*3.14159265359*NPeriod0*(r-0.0)/29.9999994966); r=x;
+No external sinusoid detected for atom type 1, continuing
+External potential with amplitude U=0.5, NPeriod=1.0
+No external spline detected for atom type 0, continuing
+No external spline detected for atom type 1, continuing
+--- All forces added: ---
+[<simtk.openmm.openmm.HarmonicBondForce; proxy of <Swig Object of type 'OpenMM::HarmonicBondForce *' at 0x7f442b230570> >, <simtk.openmm.openmm.CustomNonbondedForce; proxy of <Swig Object of type 'OpenMM::CustomNonbondedForce *' at 0x7f442b230660> >, <simtk.openmm.openmm.CustomExternalForce; proxy of <Swig Object of type 'OpenMM::CustomExternalForce *' at 0x7f442b230690> >]
+=== Preparing Simulation ===
+Manually setting platform: OpenCL and device: 1
+{'dt': Quantity(value=0.1, unit=picosecond), 'fric': Quantity(value=5.0, unit=/picosecond), 'temp': Quantity(value=120.27221251395184, unit=kelvin)}
+=== Initializing Simulation ===
+=== Equilibrating ===
+Progress will be reported every 4000 steps
+=== Production 1000000 steps total, 100000.0 tau total (100000.0 ps) ===
+#"Step"	"Potential Energy (kJ/mole)"	"Kinetic Energy (kJ/mole)"	"Temperature (K)"	"Box Volume (nm^3)"	"Density (g/mL)"	"Speed (ns/day)"
+400000	63509.921875	10161.2966224	120.703370546	6749.99980563	0.00166053883015	0
+800000	63578.1679688	10181.0197625	120.937656541	6749.99980563	0.00166053883015	8.54e+03
+=== Finished production in 992.078962803 seconds
+=== Temporary files from openMM simulation: ===
+['/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.prodlog.txt', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.output.xml', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.initial.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.constrained.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.equilibrated.pdb']
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.initial.pdb
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.prodlog.txt
+/home/kshen/mylib/sim.20190727/sim/srel/base.py:390: RuntimeWarning: divide by zero encountered in log
+  ReweightFrac = np.exp(-np.sum(np.where(Weight > 0., Weight * np.log(Weight), 0.))) / len(Traj)
+/home/kshen/mylib/sim.20190727/sim/srel/base.py:390: RuntimeWarning: invalid value encountered in multiply
+  ReweightFrac = np.exp(-np.sum(np.where(Weight > 0., Weight * np.log(Weight), 0.))) / len(Traj)
+Converting OpenMM trajectory to raw format for faster access.
+Starting minimization
+
+Evaluating new gradient
+
+ITERATION 1  (STEEPEST DESCENT)
+   Variable                    Value         DObj        DDObj    SearchDir
+   Obj                    0.0000e+00
+   Srel                   0.0000e+00
+   Bias                   0.0000e+00
+   dx                     0.0000e+00
+   ReweightFrac           1.0000e+00
+   AB:B                   4.4740e-01   4.0112e+03   3.8254e+05  -4.0112e+03
+
+ITERATION 2  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -9.0681e+02  -1.0e+00
+   Srel                  -9.0681e+02  -1.0e+00
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-04
+   ReweightFrac           4.0000e-03
+
+Step size too large: surpassed reweighting limit.  Backing off.
+
+ITERATION 3  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -9.5650e+01   8.5e+00
+   Srel                  -9.5650e+01   8.5e+00
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-05
+   ReweightFrac           4.0017e-03
+
+Step size too large: surpassed reweighting limit.  Backing off.
+
+ITERATION 4  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.3224e+01   6.2e+00
+   Srel                  -1.3224e+01   6.2e+00
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-06
+   ReweightFrac           1.0078e-01
+
+Step size too large: reweight fraction decreased too fast.  Backing off.
+
+ITERATION 5  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.5781e+00   7.4e+00
+   Srel                  -1.5781e+00   7.4e+00
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-07
+   ReweightFrac           9.6955e-01
+
+Finding three points to bracket minimum
+
+ITERATION 6  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -3.0944e+00  -4.9e-01
+   Srel                  -3.0944e+00  -4.9e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-07
+   ReweightFrac           8.8370e-01
+
+ITERATION 7  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -4.5490e+00  -3.2e-01
+   Srel                  -4.5490e+00  -3.2e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0000e-07
+   ReweightFrac           7.5842e-01
+
+ITERATION 8  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -5.6003e+00  -1.9e-01
+   Srel                  -5.6003e+00  -1.9e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     7.5000e-08
+   ReweightFrac           6.5167e-01
+
+ITERATION 9  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -6.3668e+00  -1.2e-01
+   Srel                  -6.3668e+00  -1.2e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           5.7074e-01
+
+ITERATION 10  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -7.1150e+00  -1.1e-01
+   Srel                  -7.1150e+00  -1.1e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           4.9281e-01
+
+ITERATION 11  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -7.8456e+00  -9.3e-02
+   Srel                  -7.8456e+00  -9.3e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           4.2044e-01
+
+ITERATION 12  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -8.5592e+00  -8.3e-02
+   Srel                  -8.5592e+00  -8.3e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           3.5528e-01
+
+ITERATION 13  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -9.2567e+00  -7.5e-02
+   Srel                  -9.2567e+00  -7.5e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           2.9815e-01
+
+ITERATION 14  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -9.9390e+00  -6.9e-02
+   Srel                  -9.9390e+00  -6.9e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.6250e-08
+   ReweightFrac           2.4913e-01
+
+ITERATION 15  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.1262e+01  -1.2e-01
+   Srel                  -1.1262e+01  -1.2e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.1250e-07
+   ReweightFrac           1.7337e-01
+
+ITERATION 16  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.2535e+01  -1.0e-01
+   Srel                  -1.2535e+01  -1.0e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.1250e-07
+   ReweightFrac           1.2170e-01
+
+ITERATION 17  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.3767e+01  -8.9e-02
+   Srel                  -1.3767e+01  -8.9e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.1250e-07
+   ReweightFrac           8.7103e-02
+
+ITERATION 18  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.6133e+01  -1.5e-01
+   Srel                  -1.6133e+01  -1.5e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.2500e-07
+   ReweightFrac           4.8100e-02
+
+ITERATION 19  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.0603e+01  -2.2e-01
+   Srel                  -2.0603e+01  -2.2e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.5000e-07
+   ReweightFrac           1.9583e-02
+
+ITERATION 20  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.7006e+01   2.1e-01
+   Srel                  -1.7006e+01   2.1e-01
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.5000e-07
+   ReweightFrac           3.9419e-02
+
+ITERATION 21  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.6300e+01   4.3e-02
+   Srel                  -1.6300e+01   4.3e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           4.6261e-02
+
+Reweighting went too far; making new trajectory.
+Making model trajectory for reweighting
+DimensionlessUnits
+=== OMM export currently uses LJ (Dimensionless) Units ===
+mass: 1.0 dalton
+epsilon: 1.0 kJ/mol
+tau: 1.0 ps
+=== Creating OMM System ===
+...setting box size [29.99999949664749, 14.999999819753631, 14.9999999999834]
+--- Creating Topology ---
+Total number of particles in system: 6750
+Total number of constraints: 0
+--- Create Forcefield ---
+---> Harmonic bond
+Site-Type Bond Matrix: 2x2
+[[False False]
+ [False False]]
+[[0 0]
+ [0 0]]
+---> Nonbonded Force
+Global cutoff (largest specified cutoff): 5.0
+Using tabulation to aggregate interaction between every pair of atom types
+Nonbonded interactions detected, adding using tabulated potential
+---> External Force
+Adding external potential for atom type 0: Uext=0.5, NPeriod=1.0, axis=0
+...U0*sin(2*3.14159265359*NPeriod0*(r-0.0)/29.9999994966); r=x;
+No external sinusoid detected for atom type 1, continuing
+External potential with amplitude U=0.5, NPeriod=1.0
+No external spline detected for atom type 0, continuing
+No external spline detected for atom type 1, continuing
+--- All forces added: ---
+[<simtk.openmm.openmm.HarmonicBondForce; proxy of <Swig Object of type 'OpenMM::HarmonicBondForce *' at 0x7f441c9e6b40> >, <simtk.openmm.openmm.CustomNonbondedForce; proxy of <Swig Object of type 'OpenMM::CustomNonbondedForce *' at 0x7f441c9e6ba0> >, <simtk.openmm.openmm.CustomExternalForce; proxy of <Swig Object of type 'OpenMM::CustomExternalForce *' at 0x7f441c9e6bd0> >]
+=== Preparing Simulation ===
+Manually setting platform: OpenCL and device: 1
+{'dt': Quantity(value=0.1, unit=picosecond), 'fric': Quantity(value=5.0, unit=/picosecond), 'temp': Quantity(value=120.27221251395184, unit=kelvin)}
+=== Initializing Simulation ===
+=== Equilibrating ===
+Progress will be reported every 4000 steps
+=== Production 1000000 steps total, 100000.0 tau total (100000.0 ps) ===
+#"Step"	"Potential Energy (kJ/mole)"	"Kinetic Energy (kJ/mole)"	"Temperature (K)"	"Box Volume (nm^3)"	"Density (g/mL)"	"Speed (ns/day)"
+400000	63319.046875	10219.4762122	121.394470595	6749.99980563	0.00166053883015	0
+800000	63334.4492188	10133.1301507	120.368788436	6749.99980563	0.00166053883015	8.77e+03
+=== Finished production in 989.190868139 seconds
+=== Temporary files from openMM simulation: ===
+['/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.prodlog.txt', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.output.xml', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.initial.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.constrained.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.equilibrated.pdb']
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.initial.pdb
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.prodlog.txt
+/home/kshen/mylib/sim.20190727/sim/srel/plot_forcefield.py:274: RuntimeWarning: invalid value encountered in double_scalars
+  ZScore = np.abs(Data[i] - NewData.mean()) / NewData.std()
+/home/kshen/anaconda3/envs/py27/lib/python2.7/site-packages/matplotlib/axes/_base.py:3471: UserWarning: Attempting to set identical bottom==top results
+in singular transformations; automatically expanding.
+bottom=0.0, top=0.0
+  'bottom=%s, top=%s') % (bottom, top))
+Converting OpenMM trajectory to raw format for faster access.
+Getting cross energies of old trajectory in new forcefield.
+Getting cross energies of new trajectory in old forcefield.
+Running Bennet algorithm to reweight old to new trajectory.
+Bennett initial guesses: 352.313714, 351.714227
+Bennett iteration 1: current error is 9.584e-02
+Bennett iteration 2: current error is 1.924e-03
+Bennett iteration 3: current error is 6.222e-06
+Bennett iteration 4: current error is 4.059e-10
+Bennett iteration 5: current error is 3.553e-14
+Bennett final free energy: 351.611062 +- 0.170953
+Reweighting starting with 88.5% new and 11.5% old trajectory
+Evaluating new gradient
+
+ITERATION 22  (STEEPEST DESCENT)
+   Variable                    Value         DObj        DDObj    SearchDir
+   Obj                   -1.6300e+01
+   Srel                  -1.6300e+01
+   Bias                   0.0000e+00
+   dx                     8.5638e-08
+   ReweightFrac           1.0000e+00
+   CGBeta                 0.0000e+00
+   AB:B                   4.4222e-01   2.3637e+03   2.8913e+05  -2.3637e+03
+
+ITERATION 23  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.6772e+01  -2.8e-02
+   Srel                  -1.6772e+01  -2.8e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           9.7999e-01
+
+Finding three points to bracket minimum
+
+ITERATION 24  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.7233e+01  -2.7e-02
+   Srel                  -1.7233e+01  -2.7e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           9.2538e-01
+
+ITERATION 25  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.7683e+01  -2.5e-02
+   Srel                  -1.7683e+01  -2.5e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           8.4803e-01
+
+ITERATION 26  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.8121e+01  -2.4e-02
+   Srel                  -1.8121e+01  -2.4e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           7.6048e-01
+
+ITERATION 27  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.8547e+01  -2.3e-02
+   Srel                  -1.8547e+01  -2.3e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           6.7242e-01
+
+ITERATION 28  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.8963e+01  -2.2e-02
+   Srel                  -1.8963e+01  -2.2e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           5.8960e-01
+
+ITERATION 29  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.9367e+01  -2.1e-02
+   Srel                  -1.9367e+01  -2.1e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           5.1453e-01
+
+ITERATION 30  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -1.9761e+01  -2.0e-02
+   Srel                  -1.9761e+01  -2.0e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           4.4774e-01
+
+ITERATION 31  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.0143e+01  -1.9e-02
+   Srel                  -2.0143e+01  -1.9e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           3.8872e-01
+
+ITERATION 32  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.0515e+01  -1.8e-02
+   Srel                  -2.0515e+01  -1.8e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           3.3666e-01
+
+ITERATION 33  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.0875e+01  -1.7e-02
+   Srel                  -2.0875e+01  -1.7e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.5638e-08
+   ReweightFrac           2.9073e-01
+
+ITERATION 34  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.1564e+01  -3.2e-02
+   Srel                  -2.1564e+01  -3.2e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.7128e-07
+   ReweightFrac           2.1456e-01
+
+ITERATION 35  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.2211e+01  -2.9e-02
+   Srel                  -2.2211e+01  -2.9e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.7128e-07
+   ReweightFrac           1.5613e-01
+
+ITERATION 36  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.2818e+01  -2.7e-02
+   Srel                  -2.2818e+01  -2.7e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.7128e-07
+   ReweightFrac           1.1251e-01
+
+ITERATION 37  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.3925e+01  -4.6e-02
+   Srel                  -2.3925e+01  -4.6e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.4255e-07
+   ReweightFrac           5.8728e-02
+
+ITERATION 38  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.4914e+01  -4.0e-02
+   Srel                  -2.4914e+01  -4.0e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.4255e-07
+   ReweightFrac           3.2791e-02
+
+ITERATION 39  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.6664e+01  -6.6e-02
+   Srel                  -2.6664e+01  -6.6e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-07
+   ReweightFrac           1.4138e-02
+
+ITERATION 40  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.5747e+01   3.6e-02
+   Srel                  -2.5747e+01   3.6e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-07
+   ReweightFrac           2.1105e-02
+
+Reweighting went too far; making new trajectory.
+> Deleting temporary trajectory file /home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.traj.dat
+Making model trajectory for reweighting
+DimensionlessUnits
+=== OMM export currently uses LJ (Dimensionless) Units ===
+mass: 1.0 dalton
+epsilon: 1.0 kJ/mol
+tau: 1.0 ps
+=== Creating OMM System ===
+...setting box size [29.99999949664749, 14.999999819753631, 14.9999999999834]
+--- Creating Topology ---
+Total number of particles in system: 6750
+Total number of constraints: 0
+--- Create Forcefield ---
+---> Harmonic bond
+Site-Type Bond Matrix: 2x2
+[[False False]
+ [False False]]
+[[0 0]
+ [0 0]]
+---> Nonbonded Force
+Global cutoff (largest specified cutoff): 5.0
+Using tabulation to aggregate interaction between every pair of atom types
+Nonbonded interactions detected, adding using tabulated potential
+---> External Force
+Adding external potential for atom type 0: Uext=0.5, NPeriod=1.0, axis=0
+...U0*sin(2*3.14159265359*NPeriod0*(r-0.0)/29.9999994966); r=x;
+No external sinusoid detected for atom type 1, continuing
+External potential with amplitude U=0.5, NPeriod=1.0
+No external spline detected for atom type 0, continuing
+No external spline detected for atom type 1, continuing
+--- All forces added: ---
+[<simtk.openmm.openmm.HarmonicBondForce; proxy of <Swig Object of type 'OpenMM::HarmonicBondForce *' at 0x7f441ca1cf60> >, <simtk.openmm.openmm.CustomNonbondedForce; proxy of <Swig Object of type 'OpenMM::CustomNonbondedForce *' at 0x7f441ca1cfc0> >, <simtk.openmm.openmm.CustomExternalForce; proxy of <Swig Object of type 'OpenMM::CustomExternalForce *' at 0x7f441ca1ced0> >]
+=== Preparing Simulation ===
+Manually setting platform: OpenCL and device: 1
+{'dt': Quantity(value=0.1, unit=picosecond), 'fric': Quantity(value=5.0, unit=/picosecond), 'temp': Quantity(value=120.27221251395184, unit=kelvin)}
+=== Initializing Simulation ===
+=== Equilibrating ===
+Progress will be reported every 4000 steps
+=== Production 1000000 steps total, 100000.0 tau total (100000.0 ps) ===
+#"Step"	"Potential Energy (kJ/mole)"	"Kinetic Energy (kJ/mole)"	"Temperature (K)"	"Box Volume (nm^3)"	"Density (g/mL)"	"Speed (ns/day)"
+400000	62888.4609375	10134.7039942	120.387483709	6749.99980563	0.00166053883015	0
+800000	62960.4101562	10070.6597601	119.626719094	6749.99980563	0.00166053883015	8.67e+03
+=== Finished production in 1010.43547893 seconds
+=== Temporary files from openMM simulation: ===
+['/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.prodlog.txt', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.output.xml', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.initial.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.constrained.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.equilibrated.pdb']
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.initial.pdb
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.prodlog.txt
+Converting OpenMM trajectory to raw format for faster access.
+Getting cross energies of old trajectory in new forcefield.
+Getting cross energies of new trajectory in old forcefield.
+Running Bennet algorithm to reweight old to new trajectory.
+Bennett initial guesses: 403.413702, 402.964575
+Bennett iteration 1: current error is 1.808e-01
+Bennett iteration 2: current error is 1.657e-03
+Bennett iteration 3: current error is 3.156e-06
+Bennett iteration 4: current error is 5.010e-11
+Bennett final free energy: 402.794449 +- 0.152788
+Reweighting starting with 88.0% new and 12.0% old trajectory
+Evaluating new gradient
+
+ITERATION 41  (STEEPEST DESCENT)
+   Variable                    Value         DObj        DDObj    SearchDir
+   Obj                   -2.5747e+01
+   Srel                  -2.5747e+01
+   Bias                   0.0000e+00
+   dx                     6.8511e-07
+   ReweightFrac           1.0000e+00
+   CGBeta                 0.0000e+00
+   AB:B                   4.3642e-01   1.0900e+03   1.6061e+05  -1.0900e+03
+
+ITERATION 42  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.6517e+01  -2.9e-02
+   Srel                  -2.6517e+01  -2.9e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-07
+   ReweightFrac           8.6158e-01
+
+Step size too large: reweight fraction decreased too fast.  Backing off.
+
+ITERATION 43  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.5828e+01   2.7e-02
+   Srel                  -2.5828e+01   2.7e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-08
+   ReweightFrac           9.9824e-01
+
+Finding three points to bracket minimum
+
+ITERATION 44  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.5908e+01  -3.1e-03
+   Srel                  -2.5908e+01  -3.1e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-08
+   ReweightFrac           9.9309e-01
+
+ITERATION 45  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.5988e+01  -3.0e-03
+   Srel                  -2.5988e+01  -3.0e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     6.8511e-08
+   ReweightFrac           9.8475e-01
+
+ITERATION 46  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.6143e+01  -6.0e-03
+   Srel                  -2.6143e+01  -6.0e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.3702e-07
+   ReweightFrac           9.5958e-01
+
+ITERATION 47  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.6444e+01  -1.1e-02
+   Srel                  -2.6444e+01  -1.1e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           8.8393e-01
+
+ITERATION 48  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.6731e+01  -1.1e-02
+   Srel                  -2.6731e+01  -1.1e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           7.9067e-01
+
+ITERATION 49  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.7004e+01  -1.0e-02
+   Srel                  -2.7004e+01  -1.0e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           6.9453e-01
+
+ITERATION 50  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.7263e+01  -9.5e-03
+   Srel                  -2.7263e+01  -9.5e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           6.0372e-01
+
+ITERATION 51  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.7509e+01  -8.9e-03
+   Srel                  -2.7509e+01  -8.9e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           5.2152e-01
+
+ITERATION 52  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.7740e+01  -8.4e-03
+   Srel                  -2.7740e+01  -8.4e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           4.4840e-01
+
+ITERATION 53  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.7958e+01  -7.8e-03
+   Srel                  -2.7958e+01  -7.8e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           3.8371e-01
+
+ITERATION 54  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.8162e+01  -7.2e-03
+   Srel                  -2.8162e+01  -7.2e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           3.2649e-01
+
+ITERATION 55  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.8352e+01  -6.7e-03
+   Srel                  -2.8352e+01  -6.7e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           2.7588e-01
+
+ITERATION 56  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.8529e+01  -6.2e-03
+   Srel                  -2.8529e+01  -6.2e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.7404e-07
+   ReweightFrac           2.3121e-01
+
+ITERATION 57  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.8839e+01  -1.1e-02
+   Srel                  -2.8839e+01  -1.1e-02
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.4809e-07
+   ReweightFrac           1.5789e-01
+
+ITERATION 58  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9094e+01  -8.8e-03
+   Srel                  -2.9094e+01  -8.8e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.4809e-07
+   ReweightFrac           1.0372e-01
+
+ITERATION 59  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9293e+01  -6.8e-03
+   Srel                  -2.9293e+01  -6.8e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     5.4809e-07
+   ReweightFrac           6.5988e-02
+
+ITERATION 60  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9541e+01  -8.4e-03
+   Srel                  -2.9541e+01  -8.4e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.0962e-06
+   ReweightFrac           2.5970e-02
+
+ITERATION 61  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9583e+01  -1.4e-03
+   Srel                  -2.9583e+01  -1.4e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.1923e-06
+   ReweightFrac           6.0150e-03
+
+ITERATION 62  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9590e+01  -2.5e-04
+   Srel                  -2.9590e+01  -2.5e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.1923e-06
+   ReweightFrac           1.8229e-02
+
+ITERATION 63  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9553e+01   1.3e-03
+   Srel                  -2.9553e+01   1.3e-03
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.3944e-07
+   ReweightFrac           2.4151e-02
+
+Reweighting went too far; making new trajectory.
+> Deleting temporary trajectory file /home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.traj.dat
+Making model trajectory for reweighting
+DimensionlessUnits
+=== OMM export currently uses LJ (Dimensionless) Units ===
+mass: 1.0 dalton
+epsilon: 1.0 kJ/mol
+tau: 1.0 ps
+=== Creating OMM System ===
+...setting box size [29.99999949664749, 14.999999819753631, 14.9999999999834]
+--- Creating Topology ---
+Total number of particles in system: 6750
+Total number of constraints: 0
+--- Create Forcefield ---
+---> Harmonic bond
+Site-Type Bond Matrix: 2x2
+[[False False]
+ [False False]]
+[[0 0]
+ [0 0]]
+---> Nonbonded Force
+Global cutoff (largest specified cutoff): 5.0
+Using tabulation to aggregate interaction between every pair of atom types
+Nonbonded interactions detected, adding using tabulated potential
+---> External Force
+Adding external potential for atom type 0: Uext=0.5, NPeriod=1.0, axis=0
+...U0*sin(2*3.14159265359*NPeriod0*(r-0.0)/29.9999994966); r=x;
+No external sinusoid detected for atom type 1, continuing
+External potential with amplitude U=0.5, NPeriod=1.0
+No external spline detected for atom type 0, continuing
+No external spline detected for atom type 1, continuing
+--- All forces added: ---
+[<simtk.openmm.openmm.HarmonicBondForce; proxy of <Swig Object of type 'OpenMM::HarmonicBondForce *' at 0x7f441cb5fed0> >, <simtk.openmm.openmm.CustomNonbondedForce; proxy of <Swig Object of type 'OpenMM::CustomNonbondedForce *' at 0x7f441cb5fea0> >, <simtk.openmm.openmm.CustomExternalForce; proxy of <Swig Object of type 'OpenMM::CustomExternalForce *' at 0x7f441cb5ff30> >]
+=== Preparing Simulation ===
+Manually setting platform: OpenCL and device: 1
+{'dt': Quantity(value=0.1, unit=picosecond), 'fric': Quantity(value=5.0, unit=/picosecond), 'temp': Quantity(value=120.27221251395184, unit=kelvin)}
+=== Initializing Simulation ===
+=== Equilibrating ===
+Progress will be reported every 4000 steps
+=== Production 1000000 steps total, 100000.0 tau total (100000.0 ps) ===
+#"Step"	"Potential Energy (kJ/mole)"	"Kinetic Energy (kJ/mole)"	"Temperature (K)"	"Box Volume (nm^3)"	"Density (g/mL)"	"Speed (ns/day)"
+400000	62562.5664062	10004.2311054	118.837630573	6749.99980563	0.00166053883015	0
+800000	62522.6367188	10060.9597305	119.511494993	6749.99980563	0.00166053883015	8.77e+03
+=== Finished production in 978.461508036 seconds
+=== Temporary files from openMM simulation: ===
+['/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.prodlog.txt', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.output.xml', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.initial.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.constrained.pdb', '/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.equilibrated.pdb']
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.initial.pdb
+/home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.prodlog.txt
+Converting OpenMM trajectory to raw format for faster access.
+Getting cross energies of old trajectory in new forcefield.
+Getting cross energies of new trajectory in old forcefield.
+Running Bennet algorithm to reweight old to new trajectory.
+Bennett initial guesses: 453.826759, 454.003859
+Bennett iteration 1: current error is 8.130e-02
+Bennett iteration 2: current error is 4.079e-05
+Bennett iteration 3: current error is 1.805e-08
+Bennett iteration 4: current error is 1.421e-14
+Bennett final free energy: 453.921586 +- 0.134134
+Reweighting starting with 84.4% new and 15.6% old trajectory
+Evaluating new gradient
+
+ITERATION 64  (STEEPEST DESCENT)
+   Variable                    Value         DObj        DDObj    SearchDir
+   Obj                   -2.9553e+01
+   Srel                  -2.9553e+01
+   Bias                   0.0000e+00
+   dx                     4.3944e-07
+   ReweightFrac           1.0000e+00
+   CGBeta                 0.0000e+00
+   AB:B                   4.2997e-01   1.3210e+02   1.3293e+05  -1.3210e+02
+
+ITERATION 65  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9560e+01  -2.5e-04
+   Srel                  -2.9560e+01  -2.5e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.3944e-07
+   ReweightFrac           9.9938e-01
+
+Finding three points to bracket minimum
+
+ITERATION 66  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9567e+01  -2.4e-04
+   Srel                  -2.9567e+01  -2.4e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.3944e-07
+   ReweightFrac           9.9753e-01
+
+ITERATION 67  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9574e+01  -2.2e-04
+   Srel                  -2.9574e+01  -2.2e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     4.3944e-07
+   ReweightFrac           9.9446e-01
+
+ITERATION 68  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9586e+01  -4.0e-04
+   Srel                  -2.9586e+01  -4.0e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     8.7887e-07
+   ReweightFrac           9.8481e-01
+
+ITERATION 69  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9604e+01  -6.2e-04
+   Srel                  -2.9604e+01  -6.2e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     1.7577e-06
+   ReweightFrac           9.5270e-01
+
+ITERATION 70  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01  -5.6e-04
+   Srel                  -2.9621e+01  -5.6e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.5091e-01
+
+ITERATION 71  (LINE SEARCH BRACKET)
+   Variable                    Value FracChnge
+   Obj                   -2.9617e+01   1.4e-04
+   Srel                  -2.9617e+01   1.4e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     2.6366e-06
+   ReweightFrac           7.5868e-01
+
+Bracketed minimum
+
+ITERATION 72  (LINE SEARCH PARABOLIC)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01  -1.5e-04
+   Srel                  -2.9621e+01  -1.5e-04
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3252e-01
+
+ITERATION 73  (LINE SEARCH PARABOLIC)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01  -1.9e-08
+   Srel                  -2.9621e+01  -1.9e-08
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3322e-01
+
+ITERATION 74  (LINE SEARCH GOLDEN)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01   3.9e-09
+   Srel                  -2.9621e+01   3.9e-09
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3295e-01
+
+ITERATION 75  (LINE SEARCH PARABOLIC)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01  -4.3e-09
+   Srel                  -2.9621e+01  -4.3e-09
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3334e-01
+
+ITERATION 76  (LINE SEARCH PARABOLIC)
+   Variable                    Value FracChnge
+   Obj                   -2.9621e+01  -9.8e-13
+   Srel                  -2.9621e+01  -9.8e-13
+   Bias                   0.0000e+00   0.0e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3334e-01
+
+Finished line search
+
+Evaluating new gradient
+
+ITERATION 77  (STEEPEST DESCENT)
+   Variable                    Value         DObj        DDObj    SearchDir
+   Obj                   -2.9621e+01
+   Srel                  -2.9621e+01
+   Bias                   0.0000e+00
+   dx                     3.5155e-06
+   ReweightFrac           8.3334e-01
+   CGBeta                 2.2198e-06
+   AB:B                   4.2892e-01  -2.9322e-04   1.1676e+05   2.9322e-04
+
+Elapsed time: 804.2 min
+Minimization converged.
+
+FINAL VALUES
+   Variable                    Value
+   Obj                   -2.9621e+01
+   Srel                  -2.9621e+01
+   Bias                   0.0000e+00
+   AB:B                   4.2892e-01
+
+
+
+
+
+=== Hessian/DDSrel ===
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.22166313e+28   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   2.70319116e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00  -6.81842046e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.29593475e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.99662736e+29   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   2.68602623e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00  -6.77638533e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.28782642e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.88321688e+30   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   1.22166313e+28   0.00000000e+00
+    2.70319116e+09  -6.81842046e+09   1.29593475e+09   1.99662736e+29
+    0.00000000e+00   2.68602623e+09  -6.77638533e+09   1.28782642e+09
+    1.88321688e+30   0.00000000e+00   1.16762761e+05  -1.28819527e+10
+    2.44569119e+09  -3.26438736e+07   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00  -1.28819527e+10   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   2.44569119e+09   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00  -3.26438736e+07   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00]]
+> Deleting temporary trajectory file /home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH1.traj.dat
+> Deleting temporary trajectory file /home/kshen/Share/SCOUT/reorganize/test/tmpPizHlH2.traj.dat
