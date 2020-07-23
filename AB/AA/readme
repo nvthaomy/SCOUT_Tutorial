@@ -1,0 +1,3 @@
+Run AA simulations: python simGaussAB.py
+Convert the trajectory from .dcd format to .xyz, .pdb, or .lammpstrj: python mdtrajConvert.py trajectory.dcd trajectory_init.pdb xyz -stride {stride}
+Get 1D histogram of bead A in the z direction: python 1d-histogram.py trajectory.dcd trajectory_init.pdb xyz -axis 2 -atoms A -stride {stride}
