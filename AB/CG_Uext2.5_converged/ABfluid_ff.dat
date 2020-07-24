@@ -1,0 +1,21 @@
+>>> POTENTIAL AA
+{'Epsilon' : 0.0000e+00 ,
+ 'B' : 4.2495e-01 ,
+ 'Kappa' : 2.5000e-01 ,
+ 'Dist0' : 0.0000e+00 ,
+ 'Sigma' : 1.0000e+00 }
+>>> POTENTIAL BB
+{'Epsilon' : 0.0000e+00 ,
+ 'B' : 4.2495e-01 ,
+ 'Kappa' : 2.5000e-01 ,
+ 'Dist0' : 0.0000e+00 ,
+ 'Sigma' : 1.0000e+00 }
+>>> POTENTIAL AB
+{'Epsilon' : 0.0000e+00 ,
+ 'B' : 4.2674e-01 ,
+ 'Kappa' : 2.5000e-01 ,
+ 'Dist0' : 0.0000e+00 ,
+ 'Sigma' : 1.0000e+00 }
+>>> POTENTIAL Uext
+{'UConst' : 2.5000e+00 ,
+ 'NPeriods' : 1.0000e+00 }
